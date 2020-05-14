@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node dist/server.js",
-    "build:client": "parcel build src/index.html --out-dir dist/",
+    "build:client": "parcel build src/index.html --no-source-maps --out-dir dist/",
     "server": "nodemon --exec 'heroku local' --signal SIGTERM",
     "work": "concurrently 'yarn server' 'parcel src/index.html'"
   },
