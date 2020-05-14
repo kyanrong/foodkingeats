@@ -1,15 +1,19 @@
 import React from 'react';
 
 import { Route } from 'react-router';
+import { Switch } from 'react-router-dom';
 
-import { SearchPage } from './modules';
+import { AddPage, SearchPage } from './modules';
 
 import { Content, Title } from './app.sc';
 
 const App = () => (
   <Content>
     <Title>Food King Eats</Title>
-    <Route exact={true} path="/" component={SearchPage} />
+    <Switch>
+      <Route exact={true} path="/" component={SearchPage} />
+      <Route exact={true} path="/add" component={AddPage} />
+    </Switch>
   </Content>
 );
 
