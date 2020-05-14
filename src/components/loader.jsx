@@ -11,8 +11,8 @@ const Icon = styled.div`
   border: 10px solid #f3f3f3;
   border-top: 10px solid #543864;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 35px;
   animation: spin 2s linear infinite;
 
   @keyframes spin {
