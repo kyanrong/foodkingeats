@@ -5,7 +5,8 @@
   "author": "kyanrong <kekyanrong@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "rm -rf dist/ && yarn build:client && cp src/server.js dist/ && node dist/server.js",
+    "start:local": "node src/server.js",
     "build:client": "parcel build src/index.html --no-source-maps --out-dir dist/",
     "server": "nodemon --exec 'heroku local' --signal SIGTERM",
     "work": "concurrently 'yarn server' 'parcel src/index.html'"
