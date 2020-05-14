@@ -1,3 +1,5 @@
+DROP VIEW IF EXISTS "SearchView";
+
 CREATE VIEW "SearchView" AS
   WITH
     p as (
