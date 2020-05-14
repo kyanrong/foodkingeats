@@ -3,3 +3,4 @@
 node_modules/
 dist/
 Procfile
+yarn-error.log
