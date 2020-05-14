@@ -7,10 +7,22 @@ export const Content = styled.div`
   align-items: center;
   font-family: 'Overpass', sans-serif;
   font-size: 16px;
-  width: 55%;
   margin: 0 auto;
+  width: 95%;
+
+  @media (min-width: 600px) {
+    width: 55%;
+  }
+
+  @media (min-width: 768px) {
+    width: 80%;
+  }
 
   @media (min-width: 1024px) {
+    width: 75%;
+  }
+
+  @media (min-width: 1260px) {
     width: 50%;
   }
 `;
@@ -18,10 +30,18 @@ export const Content = styled.div`
 export const Title = styled.h1`
   margin-top: 60px;
   font-family: 'Fredoka One', cursive;
-  font-size: 60px;
   -webkit-text-fill-color: black;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
+  font-size: 40px;
+
+  @media (min-width: 768px) {
+    font-size: 50px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 60px;
+  }
 `;
 
 export const Searchbox = styled(TextField)`
