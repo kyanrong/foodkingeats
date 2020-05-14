@@ -40,16 +40,26 @@ const init = async () => {
     let terms = req.query.terms;
     terms = terms.trim();
     terms = terms.toLowerCase();
-  
+
     let response = await esClient.search({
       index: esIndex,
       body: {
         query: {
-          match: {
-            terms: {
-              query: terms,
-              analyzer: 'whitespace',
-            },
+          bool: {
+            should: [{
+              match: {
+                terms: {
+                  query: terms,
+                  analyzer: 'whitespace',
+                },
+              },
+            }, {
+              wildcard: {
+                terms: {
+                  value: `*${terms}*`,
+                },
+              },
+            }],
           },
         },
       },
