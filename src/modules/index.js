@@ -1,2 +1,2 @@
-export { default as AddPage } from './addPage';
-export { default as SearchPage } from './searchPage';
+export { default as AddPage } from './AddModule/AddPage';
+export { default as SearchPage } from './SearchModule/SearchPage';

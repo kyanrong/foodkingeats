@@ -5,7 +5,7 @@ import { Switch } from 'react-router-dom';
 
 import { AddPage, SearchPage } from './modules';
 
-import { Content, Title } from './app.sc';
+import { Content, Title } from './App.sc';
 
 const App = () => (
   <Content>

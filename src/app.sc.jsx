@@ -28,6 +28,7 @@ export const Content = styled.div`
 
 export const Title = styled.h1`
   margin-top: 60px;
+  margin-bottom: 25px;
   font-family: 'Fredoka One', cursive;
   -webkit-text-fill-color: black;
   -webkit-text-stroke-width: 1px;

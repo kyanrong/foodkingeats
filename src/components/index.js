@@ -1,2 +1,2 @@
-export { default as Card } from './card';
-export { default as Loader } from './loader';
+export { default as Card } from './Card';
+export { default as Loader } from './Loader';

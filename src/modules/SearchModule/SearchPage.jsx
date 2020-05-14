@@ -6,12 +6,12 @@ import { Input } from '@material/react-text-field';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchSearchResults } from '../actions';
-import '../assets/text-field.css';
-import { Card, Loader } from '../components';
-import { getFoods, getLoading, getSearchResults, getPlaces, getVisits, getSuccess } from '../selectors';
+import { fetchSearchResults } from '../../Actions';
+import '../../assets/text-field.css';
+import { Card, Loader } from '../../components';
+import { getFoods, getLoading, getSearchResults, getPlaces, getVisits, getSuccess } from '../../Selectors';
 
-import { CardsWrapper, EmptyCard, Searchbox } from './searchPage.sc';
+import { CardsWrapper, EmptyCard, Searchbox } from './SearchPage.sc';
 
 class SearchPage extends Component {
   constructor(props) {

@@ -1,3 +1,4 @@
+import { Label } from 'reactstrap';
 import styled from 'styled-components';
 
 export const Card = styled.div`
@@ -11,4 +12,14 @@ export const Card = styled.div`
 export const Title = styled.h2`
   margin: 0;
   font-weight: bold;
+`;
+
+export const FormLabel = styled(Label)`
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 12px;
+`;
+
+export const FormWrapper = styled.form`
+  margin-top: 15px;
 `;

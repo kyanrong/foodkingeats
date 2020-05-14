@@ -21,7 +21,7 @@ import {
   Title,
   Wrapper,
   YoutubeIcon,
-} from './card.sc';
+} from './Card.sc';
 
 const Card = ({ foodsAndVisits, place }) => (
   <Wrapper key={place.id}>

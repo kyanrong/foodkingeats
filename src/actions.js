@@ -1,7 +1,7 @@
 import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
 
-import { Schemas } from './schema';
+import { Schemas } from './Schema';
 
 export const Actions = {
   SEARCH_REQUEST: 'app/SEARCH_REQUEST',
