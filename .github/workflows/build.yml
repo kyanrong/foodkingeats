@@ -25,6 +25,9 @@ jobs:
     # Runs a single command using the runners shell
     - name: Remove dist/
       run: rm -rf dist/
+
+    - name: Install parcel
+      run: yarn add -D parcel-bundler
     
     - name: Build client
       run: yarn build:client
