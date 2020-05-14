@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { Actions } from './Actions';
+import { Actions } from './actions';
 
 const initialState = {
   entities: {
