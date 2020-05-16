@@ -6,34 +6,12 @@ import CreatableSelect from 'react-select/creatable';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
+import { fetchPlaces } from '../../Actions';
+import { getPlacesOptions } from '../../Selectors';
+
 import { Card, FormLabel, FormWrapper, Title } from './AddPage.sc';
 
-class AddPlaceForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputValue: undefined,
-    };
-  }
-
-  handleInputChange(input) {
-    this.setState({
-      inputValue: input,
-    });
-    // this.props.fetchOptions(input);
-  }
-
-  render() {
-    return (
-      <Card>
-        <Title>1. Add Place</Title>
-        <Form handleInputChange={this.handleInputChange.bind(this)} />
-      </Card>
-    );
-  }
-}
-
-const Form = ({ handleInputChange }) => {
+const Form = ({ handleInputChange, options }) => {
   const { control, handleSubmit } = useForm();
   const onSubmit = data => console.log(data);
 
@@ -47,7 +25,7 @@ const Form = ({ handleInputChange }) => {
           id="name"
           placeholder="Type to search for a place..."
           isSearchable={true}
-          options={[]}
+          options={options}
           onChange={() => {}}
           onInputChange={handleInputChange}
           getNewOptionData={inputValue => ({
@@ -105,4 +83,39 @@ const Form = ({ handleInputChange }) => {
   );
 };
 
-export default AddPlaceForm;
+class AddPlaceForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      inputValue: undefined,
+    };
+  }
+
+  handleInputChange(input) {
+    this.setState({
+      inputValue: input,
+    });
+    this.props.fetchOptions(input);
+  }
+
+  render() {
+    const { options } = this.props;
+    return (
+      <Card>
+        <Title>1. Add Place</Title>
+        <Form handleInputChange={this.handleInputChange.bind(this)} options={options} />
+      </Card>
+    );
+  }
+}
+
+
+
+export default connect(
+  state => ({
+    options: getPlacesOptions(state),
+  }),
+  dispatch => ({
+    fetchOptions: terms => dispatch(fetchPlaces(terms)),
+  })
+)(AddPlaceForm);

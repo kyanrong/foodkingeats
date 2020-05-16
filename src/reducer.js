@@ -14,6 +14,9 @@ const initialState = {
     error: null,
     results: [],
   },
+  options: {
+    placeIds: [],
+  },
 };
 
 export default handleActions({
@@ -43,6 +46,20 @@ export default handleActions({
     search: {
       ...initialState.search,
       error: action.payload,
+    },
+  }),
+  [Actions.PLACES_SUCCESS]: (state, action) => ({
+    ...state,
+    options: {
+      ...state.options,
+      placeIds: action.payload.ids,
+    },
+    entities: {
+      ...state.entities,
+      place: {
+        ...state.entities.place,
+        ...action.payload.entities,
+      },
     },
   }),
 }, initialState);

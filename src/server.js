@@ -36,6 +36,13 @@ const init = async () => {
 
   app.use(express.static('dist'));
 
+  app.get('/places', async (req, res) => {
+    const terms = req.query.terms;
+
+    let response = await pgClient.query('SELECT * FROM "Places" WHERE name ILIKE $1', [`%${terms}%`]);
+    res.send(response.rows);
+  });
+
   app.get('/search', async (req, res) => {
     let terms = req.query.terms;
     terms = terms.trim();
