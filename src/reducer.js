@@ -17,6 +17,11 @@ const initialState = {
   options: {
     placeIds: [],
   },
+  add: {
+    placeId: null,
+    showVisitForm: false,
+    showFoodForm: false,
+  },
 };
 
 export default handleActions({
@@ -60,6 +65,41 @@ export default handleActions({
         ...state.entities.place,
         ...action.payload.entities,
       },
+    },
+  }),
+  [Actions.SELECT_PLACE_ID]: (state, action) => ({
+    ...state,
+    add: {
+      ...state.add,
+      placeId: action.payload,
+    },
+  }),
+  [Actions.SET_SHOW_FOOD_FORM]: state => ({
+    ...state,
+    add: {
+      ...state.add,
+      showFoodForm: true,
+    },
+  }),
+  [Actions.UNSET_SHOW_FOOD_FORM]: state => ({
+    ...state,
+    add: {
+      ...state.add,
+      showFoodForm: false,
+    },
+  }),
+  [Actions.SET_SHOW_VISIT_FORM]: state => ({
+    ...state,
+    add: {
+      ...state.add,
+      showVisitForm: true,
+    },
+  }),
+  [Actions.UNSET_SHOW_VISIT_FORM]: state => ({
+    ...state,
+    add: {
+      ...state.add,
+      showVisitForm: false,
     },
   }),
 }, initialState);

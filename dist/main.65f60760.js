@@ -36869,7 +36869,7 @@ exports.Schemas = Schemas;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchPlaces = exports.fetchSearchResults = exports.Actions = void 0;
+exports.fetchPlaces = exports.fetchSearchResults = exports.unsetShowVisitForm = exports.setShowVisitForm = exports.unsetShowFoodForm = exports.setShowFoodForm = exports.selectPlaceId = exports.Actions = void 0;
 
 var _normalizr = require("normalizr");
 
@@ -36883,7 +36883,12 @@ const Actions = {
   SEARCH_FAILURE: 'app/SEARCH_FAILURE',
   PLACES_REQUEST: 'app/PLACES_REQUEST',
   PLACES_SUCCESS: 'app/PLACES_SUCCESS',
-  PLACES_FAILURE: 'app/PLACES_FAILURE'
+  PLACES_FAILURE: 'app/PLACES_FAILURE',
+  SELECT_PLACE_ID: 'app/SELECT_PLACE_ID',
+  SET_SHOW_FOOD_FORM: 'app/SET_SHOW_FOOD_FORM',
+  UNSET_SHOW_FOOD_FORM: 'app/UNSET_SHOW_FOOD_FORM',
+  SET_SHOW_VISIT_FORM: 'app/SET_SHOW_VISIT_FORM',
+  UNSET_SHOW_VISIT_FORM: 'app/UNSET_SHOW_VISIT_FORM'
 };
 exports.Actions = Actions;
 const searchRequest = (0, _reduxActions.createAction)(Actions.SEARCH_REQUEST);
@@ -36900,6 +36905,16 @@ const placesSuccess = (0, _reduxActions.createAction)(Actions.PLACES_SUCCESS, (i
   entities
 }));
 const placesFailure = (0, _reduxActions.createAction)(Actions.PLACES_FAILURE);
+const selectPlaceId = (0, _reduxActions.createAction)(Actions.SELECT_PLACE_ID);
+exports.selectPlaceId = selectPlaceId;
+const setShowFoodForm = (0, _reduxActions.createAction)(Actions.SET_SHOW_FOOD_FORM);
+exports.setShowFoodForm = setShowFoodForm;
+const unsetShowFoodForm = (0, _reduxActions.createAction)(Actions.UNSET_SHOW_FOOD_FORM);
+exports.unsetShowFoodForm = unsetShowFoodForm;
+const setShowVisitForm = (0, _reduxActions.createAction)(Actions.SET_SHOW_VISIT_FORM);
+exports.setShowVisitForm = setShowVisitForm;
+const unsetShowVisitForm = (0, _reduxActions.createAction)(Actions.UNSET_SHOW_VISIT_FORM);
+exports.unsetShowVisitForm = unsetShowVisitForm;
 
 const fetchSearchResults = terms => {
   return async dispatch => {
@@ -36973,6 +36988,11 @@ const initialState = {
   },
   options: {
     placeIds: []
+  },
+  add: {
+    placeId: null,
+    showVisitForm: false,
+    showFoodForm: false
   }
 };
 
@@ -37012,6 +37032,31 @@ var _default = (0, _reduxActions.handleActions)({
       place: { ...state.entities.place,
         ...action.payload.entities
       }
+    }
+  }),
+  [_actions.Actions.SELECT_PLACE_ID]: (state, action) => ({ ...state,
+    add: { ...state.add,
+      placeId: action.payload
+    }
+  }),
+  [_actions.Actions.SET_SHOW_FOOD_FORM]: state => ({ ...state,
+    add: { ...state.add,
+      showFoodForm: true
+    }
+  }),
+  [_actions.Actions.UNSET_SHOW_FOOD_FORM]: state => ({ ...state,
+    add: { ...state.add,
+      showFoodForm: false
+    }
+  }),
+  [_actions.Actions.SET_SHOW_VISIT_FORM]: state => ({ ...state,
+    add: { ...state.add,
+      showVisitForm: true
+    }
+  }),
+  [_actions.Actions.UNSET_SHOW_VISIT_FORM]: state => ({ ...state,
+    add: { ...state.add,
+      showVisitForm: false
     }
   })
 }, initialState);
@@ -64857,7 +64902,7 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchPlaces = exports.fetchSearchResults = exports.Actions = void 0;
+exports.fetchPlaces = exports.fetchSearchResults = exports.unsetShowVisitForm = exports.setShowVisitForm = exports.unsetShowFoodForm = exports.setShowFoodForm = exports.selectPlaceId = exports.Actions = void 0;
 
 var _normalizr = require("normalizr");
 
@@ -64871,7 +64916,12 @@ const Actions = {
   SEARCH_FAILURE: 'app/SEARCH_FAILURE',
   PLACES_REQUEST: 'app/PLACES_REQUEST',
   PLACES_SUCCESS: 'app/PLACES_SUCCESS',
-  PLACES_FAILURE: 'app/PLACES_FAILURE'
+  PLACES_FAILURE: 'app/PLACES_FAILURE',
+  SELECT_PLACE_ID: 'app/SELECT_PLACE_ID',
+  SET_SHOW_FOOD_FORM: 'app/SET_SHOW_FOOD_FORM',
+  UNSET_SHOW_FOOD_FORM: 'app/UNSET_SHOW_FOOD_FORM',
+  SET_SHOW_VISIT_FORM: 'app/SET_SHOW_VISIT_FORM',
+  UNSET_SHOW_VISIT_FORM: 'app/UNSET_SHOW_VISIT_FORM'
 };
 exports.Actions = Actions;
 const searchRequest = (0, _reduxActions.createAction)(Actions.SEARCH_REQUEST);
@@ -64888,6 +64938,16 @@ const placesSuccess = (0, _reduxActions.createAction)(Actions.PLACES_SUCCESS, (i
   entities
 }));
 const placesFailure = (0, _reduxActions.createAction)(Actions.PLACES_FAILURE);
+const selectPlaceId = (0, _reduxActions.createAction)(Actions.SELECT_PLACE_ID);
+exports.selectPlaceId = selectPlaceId;
+const setShowFoodForm = (0, _reduxActions.createAction)(Actions.SET_SHOW_FOOD_FORM);
+exports.setShowFoodForm = setShowFoodForm;
+const unsetShowFoodForm = (0, _reduxActions.createAction)(Actions.UNSET_SHOW_FOOD_FORM);
+exports.unsetShowFoodForm = unsetShowFoodForm;
+const setShowVisitForm = (0, _reduxActions.createAction)(Actions.SET_SHOW_VISIT_FORM);
+exports.setShowVisitForm = setShowVisitForm;
+const unsetShowVisitForm = (0, _reduxActions.createAction)(Actions.UNSET_SHOW_VISIT_FORM);
+exports.unsetShowVisitForm = unsetShowVisitForm;
 
 const fetchSearchResults = terms => {
   return async dispatch => {
@@ -64941,7 +65001,7 @@ exports.fetchPlaces = fetchPlaces;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPlacesOptions = exports.getOptionsPlaceIds = exports.getVisits = exports.getPlaces = exports.getFoods = exports.getSuccess = exports.getLoading = exports.getSearchResults = void 0;
+exports.getShowVisitForm = exports.getShowFoodForm = exports.getPlacesOptions = exports.getOptionsPlaceIds = exports.getVisits = exports.getPlaces = exports.getFoods = exports.getSuccess = exports.getLoading = exports.getSearchResults = void 0;
 
 const getSearchResults = state => state.app.search.results;
 
@@ -64977,6 +65037,14 @@ const getPlacesOptions = state => {
 };
 
 exports.getPlacesOptions = getPlacesOptions;
+
+const getShowFoodForm = state => state.app.add.showFoodForm;
+
+exports.getShowFoodForm = getShowFoodForm;
+
+const getShowVisitForm = state => state.app.add.showVisitForm;
+
+exports.getShowVisitForm = getShowVisitForm;
 },{}],"modules/AddModule/AddPlaceForm.jsx":[function(require,module,exports) {
 "use strict";
 
@@ -65011,7 +65079,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 const Form = ({
   handleInputChange,
-  options
+  handleOnSelect,
+  options,
+  showRestOfForm
 }) => {
   const {
     control,
@@ -65030,7 +65100,7 @@ const Form = ({
     placeholder: "Type to search for a place...",
     isSearchable: true,
     options: options,
-    onChange: () => {},
+    onChange: handleOnSelect,
     onInputChange: handleInputChange,
     getNewOptionData: inputValue => ({
       id: `new-${inputValue}`,
@@ -65040,7 +65110,7 @@ const Form = ({
     getOptionValue: option => option.id,
     isValidNewOption: inputValue => inputValue.length,
     createOptionPosition: "first"
-  })), /*#__PURE__*/_react.default.createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react.default.createElement(_AddPage.FormLabel, {
+  })), showRestOfForm ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react.default.createElement(_AddPage.FormLabel, {
     for: "street"
   }, "Street"), /*#__PURE__*/_react.default.createElement(_reactHookForm.Controller, {
     as: _reactstrap.Input,
@@ -65097,14 +65167,15 @@ const Form = ({
   }), "No"))), /*#__PURE__*/_react.default.createElement(_reactstrap.Button, {
     type: "submit",
     color: "primary"
-  }, "Save"));
+  }, "Save")) : null);
 };
 
 class AddPlaceForm extends _react.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: undefined
+      inputValue: undefined,
+      showRestOfForm: false
     };
   }
 
@@ -65115,13 +65186,36 @@ class AddPlaceForm extends _react.Component {
     this.props.fetchOptions(input);
   }
 
+  handleOnSelect(arr) {
+    const value = arr[0];
+
+    if (value.id.includes('new')) {
+      this.setState({
+        showRestOfForm: true
+      });
+      this.props.selectPlaceId(null);
+      this.props.unsetShowVisitForm();
+    } else {
+      this.setState({
+        showRestOfForm: false
+      });
+      this.props.selectPlaceId(value.id);
+      this.props.setShowVisitForm();
+    }
+  }
+
   render() {
     const {
       options
     } = this.props;
+    const {
+      showRestOfForm
+    } = this.state;
     return /*#__PURE__*/_react.default.createElement(_AddPage.Card, null, /*#__PURE__*/_react.default.createElement(_AddPage.Title, null, "1. Add Place"), /*#__PURE__*/_react.default.createElement(Form, {
       handleInputChange: this.handleInputChange.bind(this),
-      options: options
+      options: options,
+      handleOnSelect: this.handleOnSelect.bind(this),
+      showRestOfForm: showRestOfForm
     }));
   }
 
@@ -65130,7 +65224,10 @@ class AddPlaceForm extends _react.Component {
 var _default = (0, _reactRedux.connect)(state => ({
   options: (0, _Selectors.getPlacesOptions)(state)
 }), dispatch => ({
-  fetchOptions: terms => dispatch((0, _Actions.fetchPlaces)(terms))
+  fetchOptions: terms => dispatch((0, _Actions.fetchPlaces)(terms)),
+  selectPlaceId: id => dispatch((0, _Actions.selectPlaceId)(id)),
+  setShowVisitForm: () => dispatch((0, _Actions.setShowVisitForm)()),
+  unsetShowVisitForm: () => dispatch((0, _Actions.unsetShowVisitForm)())
 }))(AddPlaceForm);
 
 exports.default = _default;

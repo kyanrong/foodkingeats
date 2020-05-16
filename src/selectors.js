@@ -12,3 +12,6 @@ export const getPlacesOptions = state => {
   const ids = getOptionsPlaceIds(state);
   return ids.map(x => state.app.entities.place[x]);
 };
+
+export const getShowFoodForm = state => state.app.add.showFoodForm;
+export const getShowVisitForm = state => state.app.add.showVisitForm;
