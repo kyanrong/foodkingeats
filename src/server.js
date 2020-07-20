@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 const es = require('elasticsearch');
 const express = require('express');
 const groupBy = require('lodash.groupby');
@@ -35,6 +36,17 @@ const init = async () => {
   }
 
   app.use(express.static('dist'));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
+
+  app.post('/place', async (req, res) => {
+    const data = req.body;
+    values = [data.name, data.street, data.unit, data.building, data.postal, data.isHalal];
+    const sql = 'INSERT INTO "Places"(name, street, unit, building, postal, "isHalal") VALUES($1, $2, $3, $4, $5, $6) RETURNING id';
+    let response = await pgClient.query(sql, values);
+    
+    res.send(response.rows[0]);
+  });
 
   app.get('/places', async (req, res) => {
     const terms = req.query.terms;

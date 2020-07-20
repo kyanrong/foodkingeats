@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import { useForm, Controller } from 'react-hook-form';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -24,7 +23,7 @@ const Form = ({ }) => {
 
   return (
     <FormWrapper>
-      <FormGroup>
+      {/* <FormGroup>
         <FormLabel for="name">Name</FormLabel>
         <Controller as={Input} control={control} type="text" name="name" id="name"
           placeholder="What is the name of the food?" />
@@ -62,7 +61,7 @@ const Form = ({ }) => {
         <Controller as={Input} control={control} type="text" name="notes" id="notes"
           placeholder="Any additional info?" />
       </FormGroup>
-      <Button type="submit" color="primary">Save</Button>
+      <Button type="submit" color="primary">Save</Button> */}
     </FormWrapper>
   );
 };

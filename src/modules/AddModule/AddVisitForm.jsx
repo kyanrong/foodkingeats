@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
-import { useForm, Controller } from 'react-hook-form';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 
@@ -24,7 +23,7 @@ const Form = ({ handleInputChange }) => {
 
   return (
     <FormWrapper>
-      <FormGroup tag="fieldset">
+      {/* <FormGroup tag="fieldset">
         <FormLabel for="isSponsored">Sponsored?</FormLabel>
         <FormGroup check>
           <Label check>
@@ -39,17 +38,20 @@ const Form = ({ handleInputChange }) => {
       </FormGroup>
       <FormGroup>
         <FormLabel for="dateOfUpload">Date of Upload</FormLabel>
-        <Controller as={Input} control={control} type="date" name="dateOfUpload" id="dateOfUpload" placeholder="YYYY-MM-DD" />
+        <Controller as={Input} control={control} type="date" name="dateOfUpload" id="dateOfUpload"     
+          placeholder="YYYY-MM-DD" />
       </FormGroup>
       <FormGroup>
         <FormLabel for="youtubeUrl">YouTube URL</FormLabel>
-        <Controller as={Input} control={control} type="text" name="youtubeUrl" id="youtubeUrl" placeholder="What is the YouTube URL, at timestamp?" />
+        <Controller as={Input} control={control} type="text" name="youtubeUrl" id="youtubeUrl"
+          placeholder="What is the timestamped YouTube URL?" />
       </FormGroup>
       <FormGroup>
         <FormLabel for="rating">Rating</FormLabel>
-        <Controller as={Input} control={control} type="number" name="rating" id="rating" placeholder="What is the given rating?" />
+        <Controller as={Input} control={control} type="number" name="rating" id="rating"
+          placeholder="What is the given rating?" />
       </FormGroup>
-      <Button type="submit" color="primary">Save</Button>
+      <Button type="submit" color="primary">Save</Button> */}
     </FormWrapper>
   );
 };

@@ -34,12 +34,12 @@ const Card = ({ foodsAndVisits, place }) => (
       </Left>
       <Right>
         <div>
-          {place.address.street} {place.address.unit}
-          {place.address.street || place.address.unit ? <br /> : null}
-          {place.address.building}
-          {place.address.building ? <br /> : null}
-          {place.address.postal}
-          {place.address.postal ? <br /> : null}
+          {place.street} {place.unit}
+          {place.street || place.unit ? <br /> : null}
+          {place.building}
+          {place.building ? <br /> : null}
+          {place.postal}
+          {place.postal ? <br /> : null}
         </div>
         {place.isHalal
           ? <img src={require('../assets/halal.png')} height="50px" />
