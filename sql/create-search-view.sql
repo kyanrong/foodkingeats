@@ -3,7 +3,7 @@ DROP VIEW IF EXISTS "SearchView";
 CREATE VIEW "SearchView" AS
   WITH
     p as (
-      SELECT id, name, "isHalal", address->>'street' AS street, address->>'building' AS building, address->>'postal' AS postal
+      SELECT id, name, "isHalal", street, building, postal
       FROM "Places"
     ),
     v as (

@@ -1,7 +1,10 @@
 CREATE TABLE "Places"(
   id uuid UNIQUE DEFAULT uuid_generate_v4(),
   name varchar UNIQUE NOT NULL,
-  address jsonb,
+  street varchar,
+  building varchar,
+  unit varchar,
+  postal varchar,
   "isHalal" boolean DEFAULT FALSE,
   PRIMARY KEY (id)
 );
