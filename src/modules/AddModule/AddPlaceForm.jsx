@@ -145,7 +145,7 @@ class AddPlaceForm extends Component {
                           &nbsp;&nbsp;
                         </span>)
                       : null}
-                    {success ? 'Successfully added!' : 'Save'}
+                    {success ? 'Successfully saved!' : 'Save'}
                   </Button>
                 </React.Fragment>)
               : null}

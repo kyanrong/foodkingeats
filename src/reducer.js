@@ -19,8 +19,12 @@ const initialState = {
   },
   add: {
     placeId: null,
+    visitId: null,
     showVisitForm: false,
     showFoodForm: false,
+    loading: false,
+    success: false,
+    error: null,
   },
 };
 
@@ -100,6 +104,63 @@ export default handleActions({
     add: {
       ...state.add,
       showVisitForm: false,
+    },
+  }),
+  [Actions.ADD_PLACE_REQUEST]: state => ({
+    ...state,
+    add: {
+      ...state.add,
+      loading: true,
+      success: false,
+      error: null,
+    },
+  }),
+  [Actions.ADD_PLACE_SUCCESS]: (state, action) => ({
+    ...state,
+    add: {
+      ...state.add,
+      loading: false,
+      success: true,
+      error: null,
+      placeId: action.payload,
+      showVisitForm: true,
+    },
+  }),
+  [Actions.ADD_PLACE_FAILURE]: (state, action) => ({
+    ...state,
+    add: {
+      ...state.add,
+      loading: false,
+      success: false,
+      error: action.payload,
+    },
+  }),
+  [Actions.ADD_VISIT_REQUEST]: state => ({
+    ...state,
+    add: {
+      ...state.add,
+      loading: true,
+      success: false,
+      error: null,
+    },
+  }),
+  [Actions.ADD_VISIT_SUCCESS]: (state, action) => ({
+    ...state,
+    add: {
+      ...state.add,
+      loading: false,
+      success: true,
+      error: null,
+      visitId: action.payload,
+    },
+  }),
+  [Actions.ADD_VISIT_FAILURE]: (state, action) => ({
+    ...state,
+    add: {
+      ...state.add,
+      loading: false,
+      success: false,
+      error: action.payload,
     },
   }),
 }, initialState);

@@ -15,3 +15,9 @@ export const getPlacesOptions = state => {
 
 export const getShowFoodForm = state => state.app.add.showFoodForm;
 export const getShowVisitForm = state => state.app.add.showVisitForm;
+
+export const getAddLoading = state => state.app.add.loading;
+export const getAddSuccess = state => state.app.add.success;
+
+export const getAddPlaceId = state => state.app.add.placeId;
+export const getAddVisitId = state => state.app.add.visitId;

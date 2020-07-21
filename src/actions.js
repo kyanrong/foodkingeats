@@ -1,6 +1,7 @@
 import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
 
+import { getAddPlaceId } from './Selectors';
 import { Schemas } from './Schema';
 
 export const Actions = {
@@ -19,6 +20,14 @@ export const Actions = {
 
   SET_SHOW_VISIT_FORM: 'app/SET_SHOW_VISIT_FORM',
   UNSET_SHOW_VISIT_FORM: 'app/UNSET_SHOW_VISIT_FORM',
+
+  ADD_PLACE_REQUEST: 'app/ADD_PLACE_REQUEST',
+  ADD_PLACE_SUCCESS: 'app/ADD_PLACE_SUCCESS',
+  ADD_PLACE_FAILURE: 'app/ADD_PLACE_FAILURE',
+
+  ADD_VISIT_REQUEST: 'app/ADD_VISIT_REQUEST',
+  ADD_VISIT_SUCCESS: 'app/ADD_VISIT_SUCCESS',
+  ADD_VISIT_FAILURE: 'app/ADD_VISIT_FAILURE',
 };
 
 const searchRequest = createAction(Actions.SEARCH_REQUEST);
@@ -38,6 +47,14 @@ export const unsetShowFoodForm =createAction(Actions.UNSET_SHOW_FOOD_FORM);
 export const setShowVisitForm = createAction(Actions.SET_SHOW_VISIT_FORM);
 export const unsetShowVisitForm = createAction(Actions.UNSET_SHOW_VISIT_FORM);
 
+export const addPlaceRequest = createAction(Actions.ADD_PLACE_REQUEST);
+export const addPlaceSuccess = createAction(Actions.ADD_PLACE_SUCCESS);
+export const addPlaceFailure = createAction(Actions.ADD_PLACE_FAILURE);
+
+export const addVisitRequest = createAction(Actions.ADD_VISIT_REQUEST);
+export const addVisitSuccess = createAction(Actions.ADD_VISIT_SUCCESS);
+export const addVisitFailure = createAction(Actions.ADD_VISIT_FAILURE);
+
 export const fetchSearchResults = terms => {
   return async dispatch => {
     dispatch(searchRequest());
@@ -56,7 +73,6 @@ export const fetchSearchResults = terms => {
 
       dispatch(searchSuccess(response.searchResults, normalizedPlaces, normalizedVisits, normalizedFoods));
     } catch (err) {
-      console.log(err);
       dispatch(searchFailure(err));
     }
   };
@@ -78,6 +94,44 @@ export const fetchPlaces = terms => {
 
     } catch (err) {
       dispatch(placesFailure(err));
+    }
+  };
+};
+
+export const addPlace = data => {
+  return async dispatch => {
+    dispatch(addPlaceRequest());
+    try {
+      let response = await fetch('/place', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      response = await response.json();
+      dispatch(addPlaceSuccess(response.id));
+    } catch (err) {
+      dispatch(addPlaceFailure(err));
+    }
+  };
+};
+
+export const addVisit = data => {
+  return async (dispatch, getState) => {
+    dispatch(addVisitRequest());
+    data = {
+      ...data,
+      'placeId': getAddPlaceId(getState()),
+    };
+    try {
+      let response = await fetch('/visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      response = await response.json();
+      dispatch(addVisitSuccess(response.id));
+    } catch (err) {
+      dispatch(addVisitFailure(err));
     }
   };
 };

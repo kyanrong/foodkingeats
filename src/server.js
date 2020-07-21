@@ -48,6 +48,15 @@ const init = async () => {
     res.send(response.rows[0]);
   });
 
+  app.post('/visit', async (req, res) => {
+    const data = req.body;
+    values = [data.placeId, data.isSponsored, data.rating, data.youtubeUrl, data.dateOfUpload];
+    const sql = 'INSERT INTO "Visits"("PlaceId", "isSponsored", rating, "youtubeUrl", "dateOfUpload") VALUES($1, $2, $3, $4, $5) RETURNING id';
+    let response = await pgClient.query(sql, values);
+    
+    res.send(response.rows[0]);
+  });
+
   app.get('/places', async (req, res) => {
     const terms = req.query.terms;
 
