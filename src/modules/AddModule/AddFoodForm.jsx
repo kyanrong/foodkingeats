@@ -7,6 +7,28 @@ import { connect } from 'react-redux';
 import { Card, FormLabel, FormWrapper, Title } from './AddPage.sc';
 
 class AddFoodName extends Component {
+  handleSubmit(ev) {
+    ev.preventDefault();
+    const form = new FormData(ev.target);
+
+    const data = {
+      'name': null,
+      'currency': 'SGD',
+      'priceMin': null,
+      'priceMax': null,
+      'notes': null,
+      'hasPriceRange': null,
+    };
+
+    for (let [key, value] of form.entries()) {
+      if (key === 'hasPriceRange') {
+        value = value === 'yes';
+      }
+      
+      data[key] = value || value.length ? value : data[key];
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -18,12 +40,9 @@ class AddFoodName extends Component {
 }
 
 const Form = ({ }) => {
-  const { control, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
-
   return (
     <FormWrapper>
-      {/* <FormGroup>
+      <FormGroup>
         <FormLabel for="name">Name</FormLabel>
         <Controller as={Input} control={control} type="text" name="name" id="name"
           placeholder="What is the name of the food?" />
@@ -61,7 +80,7 @@ const Form = ({ }) => {
         <Controller as={Input} control={control} type="text" name="notes" id="notes"
           placeholder="Any additional info?" />
       </FormGroup>
-      <Button type="submit" color="primary">Save</Button> */}
+      <Button type="submit" color="primary">Save</Button>
     </FormWrapper>
   );
 };

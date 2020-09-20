@@ -31,7 +31,6 @@ class AddVisitForm extends Component {
       data[key] = value || value.length ? value : data[key];
     }
 
-    console.log(data);
     this.props.addVisit(data);
   }
 

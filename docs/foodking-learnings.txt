@@ -1,0 +1,9 @@
+Had to rework the database schema a few times.
+Cases:
+- Visits to places overseas (needed to add currency)
+-> Added currrency column
+- Addresses in other countries are of different format 
+- Visits to same places (affects dateOfUpload, rating, isSponsored, youtubeUrl)
+-> Added new table Visits and added VisitId column in Food table
+- Prices of different formats (some only provided minimum prices, some had a price range, some had additional info like $x for one slice)
+-> Added minPrice, maxPrice, hasPriceRange

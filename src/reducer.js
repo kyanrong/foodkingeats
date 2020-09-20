@@ -152,6 +152,7 @@ export default handleActions({
       success: true,
       error: null,
       visitId: action.payload,
+      showFoodForm: true,
     },
   }),
   [Actions.ADD_VISIT_FAILURE]: (state, action) => ({
