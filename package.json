@@ -22,7 +22,7 @@
     "bootstrap": "^4.5.0",
     "connected-react-router": "^6.8.0",
     "elasticsearch": "^16.7.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "history": "^4.10.1",
     "lodash.groupby": "^4.6.0",
     "normalizr": "^3.6.0",
